@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VISION – AI-Powered DeFi Platform | $VSN Token</title>
+<meta name="description" content="VISION is the next-generation AI DeFi platform. Connect your wallet, claim $VSN tokens, stake to earn, and follow the roadmap to a decentralized future powered by artificial intelligence.">
+<meta name="keywords" content="Vision DeFi, VSN token, vision crypto, vision AI platform, buy VSN, $VSN, vision staking, vision airdrop, AI DeFi, vision tokenomics, vision roadmap">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="VISION – AI DeFi Platform | $VSN Token">
+<meta property="og:description" content="See beyond. The AI-powered DeFi platform reshaping decentralized finance. Claim. Stake. Earn.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="VISION – AI DeFi | $VSN">
+<link rel="canonical" href="https://visiondefi.io/">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3CradialGradient id='g' cx='50%25' cy='50%25' r='50%25'%3E%3Cstop offset='0%25' stop-color='%23C8A97E'/%3E%3Cstop offset='100%25' stop-color='%23614E35'/%3E%3C/radialGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='4' fill='%230C0B09'/%3E%3Cellipse cx='32' cy='32' rx='22' ry='12' fill='none' stroke='url(%23g)' stroke-width='1.5'/%3E%3Ccircle cx='32' cy='32' r='5' fill='url(%23g)'/%3E%3Ccircle cx='32' cy='32' r='2' fill='%230C0B09'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #C8A97E;
+  --gold-light: #E8CFA0;
+  --gold-pale: #F5E9D5;
+  --gold-deep: #8B6E47;
+  --ink: #0C0B09;
+  --ink2: #111009;
+  --surface: rgba(200,169,126,0.04);
+  --border: rgba(200,169,126,0.12);
+  --border-hover: rgba(200,169,126,0.3);
+  --text: #D4C4A8;
+  --muted: rgba(212,196,168,0.4);
+  --white: #F7F2EA;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+
+body {
+  background: var(--ink);
+  color: var(--text);
+  font-family: 'Montserrat', sans-serif;
+  overflow-x: hidden;
+}
+
+::selection { background: var(--gold); color: var(--ink); }
+
+canvas#nebula {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.vignette {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: radial-gradient(ellipse 80% 80% at 50% 50%, transparent 40%, rgba(12,11,9,0.7) 100%);
+}
+
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 28px 64px;
+  transition: background 0.4s, padding 0.4s;
+}
+
+nav.scrolled {
+  background: rgba(12,11,9,0.92);
+  backdrop-filter: blur(20px);
+  padding: 18px 64px;
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: 22px;
+  letter-spacing: 10px;
+  text-transform: uppercase;
+  color: var(--gold-light);
+}
+
+.nav-links { display:flex; gap:40px; list-style:none; }
+.nav-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  transition: color 0.3s;
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0; right: 0;
+  height: 1px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transition: transform 0.3s;
+}
+.nav-links a:hover { color: var(--gold-light); }
+.nav-links a:hover::after { transform: scaleX(1); }
+
+.btn-connect {
+  background: transparent;
+  border: 1px solid var(--gold-deep);
+  color: var(--gold);
+  padding: 11px 28px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.4s;
+}
+.btn-connect:hover {
+  background: rgba(200,169,126,0.08);
+  border-color: var(--gold);
+  color: var(--gold-light);
+}
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 140px 64px 100px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.eye-svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(700px, 80vw);
+  opacity: 0.06;
+  pointer-events: none;
+  animation: eyePulse 8s ease-in-out infinite;
+}
+
+@keyframes eyePulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.06; }
+  50% { transform: translate(-50%, -50%) scale(1.04); opacity: 0.1; }
+}
+
+.hero-overline {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 2;
+  animation: fadeUp 1s ease both;
+}
+
+.hero-title {
+  position: relative;
+  z-index: 2;
+  margin-bottom: 32px;
+  animation: fadeUp 1s 0.15s ease both;
+}
+
+.hero-title .t1 {
+  display: block;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(22px, 3.5vw, 44px);
+  letter-spacing: 8px;
+  color: var(--muted);
+  margin-bottom: 0;
+}
+
+.hero-title .t2 {
+  display: block;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: clamp(100px, 20vw, 220px);
+  letter-spacing: -4px;
+  line-height: 0.85;
+  color: var(--white);
+  text-shadow:
+    0 0 100px rgba(200,169,126,0.15),
+    0 0 200px rgba(200,169,126,0.05);
+}
+
+.hero-title .t3 {
+  display: block;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: clamp(18px, 3vw, 36px);
+  letter-spacing: 12px;
+  color: var(--gold);
+  margin-top: 8px;
+}
+
+.hero-divider {
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(180deg, transparent, var(--gold-deep), transparent);
+  margin: 32px auto;
+  position: relative;
+  z-index: 2;
+  animation: fadeUp 1s 0.3s ease both;
+}
+
+.hero-desc {
+  font-size: 13px;
+  font-weight: 300;
+  letter-spacing: 2px;
+  line-height: 2.2;
+  color: var(--muted);
+  max-width: 440px;
+  margin: 0 auto 52px;
+  position: relative;
+  z-index: 2;
+  animation: fadeUp 1s 0.45s ease both;
+}
+
+.hero-btns {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 2;
+  animation: fadeUp 1s 0.6s ease both;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--gold-deep), var(--gold), var(--gold-light));
+  color: var(--ink);
+  border: none;
+  padding: 16px 48px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.4s;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,0.15);
+  transform: translateX(-100%) skewX(-15deg);
+  transition: transform 0.5s;
+}
+
+.btn-primary:hover::after { transform: translateX(120%) skewX(-15deg); }
+.btn-primary:hover { box-shadow: 0 12px 40px rgba(200,169,126,0.3); transform: translateY(-2px); }
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid var(--border-hover);
+  color: var(--gold);
+  padding: 16px 48px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.4s;
+}
+
+.btn-ghost:hover {
+  background: rgba(200,169,126,0.06);
+  border-color: var(--gold);
+  color: var(--gold-light);
+  transform: translateY(-2px);
+}
+
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(20px); }
+  to { opacity:1; transform:translateY(0); }
+}
+
+.sep {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 64px;
+}
+.sep-line { flex:1; height:1px; background: linear-gradient(90deg, transparent, var(--border)); }
+.sep-line.r { background: linear-gradient(270deg, transparent, var(--border)); }
+.sep-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 4px;
+  color: var(--gold-deep);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.stats-section {
+  padding: 80px 64px;
+  position: relative;
+  z-index: 2;
+}
+
+.stats-wrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 1px solid var(--border);
+}
+
+.stat-item {
+  padding: 48px 32px;
+  text-align: center;
+  border-right: 1px solid var(--border);
+  position: relative;
+  transition: background 0.4s;
+}
+
+.stat-item:last-child { border-right: none; }
+.stat-item:hover { background: var(--surface); }
+
+.stat-val {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: 56px;
+  letter-spacing: 1px;
+  color: var(--gold-light);
+  display: block;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.stat-lbl {
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.claim-section {
+  padding: 120px 64px;
+  position: relative;
+  z-index: 2;
+}
+
+.claim-inner {
+  max-width: 860px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.section-overline {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  display: block;
+  margin-bottom: 20px;
+}
+
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(48px, 8vw, 90px);
+  line-height: 0.9;
+  margin-bottom: 16px;
+}
+
+.section-title em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.section-title strong {
+  font-weight: 600;
+  color: var(--white);
+}
+
+.claim-panel {
+  margin-top: 60px;
+  border: 1px solid var(--border);
+  padding: 60px 52px;
+  position: relative;
+  background: linear-gradient(135deg, rgba(200,169,126,0.03), transparent);
+}
+
+.claim-panel::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 20%; right: 20%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.claim-amount-display {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-size: 100px;
+  line-height: 1;
+  color: var(--white);
+  display: block;
+  letter-spacing: -2px;
+  margin-bottom: 4px;
+}
+
+.claim-ticker {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 5px;
+  color: var(--gold);
+  margin-bottom: 44px;
+  display: block;
+}
+
+.input-group {
+  display: flex;
+  max-width: 540px;
+  margin: 0 auto 20px;
+}
+
+.wallet-field {
+  flex: 1;
+  background: rgba(12,11,9,0.6);
+  border: 1px solid var(--border);
+  border-right: none;
+  padding: 15px 20px;
+  color: var(--gold-light);
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 1px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.wallet-field::placeholder { color: rgba(200,169,126,0.2); }
+.wallet-field:focus { border-color: var(--gold-deep); }
+
+.btn-check {
+  background: var(--gold-deep);
+  color: var(--ink);
+  border: 1px solid var(--gold-deep);
+  padding: 15px 24px;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.3s;
+}
+
+.btn-check:hover { background: var(--gold); border-color: var(--gold); }
+
+.claim-note {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  color: rgba(200,169,126,0.25);
+  line-height: 2;
+  margin-bottom: 32px;
+}
+
+.staking-section {
+  padding: 120px 64px;
+  position: relative;
+  z-index: 2;
+  background: var(--ink2);
+}
+
+.staking-inner { max-width: 1100px; margin: 0 auto; }
+
+.staking-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 60px;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.apy-tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--gold);
+  border: 1px solid var(--border-hover);
+  padding: 8px 20px;
+  text-transform: uppercase;
+}
+
+.stake-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+
+.stake-card {
+  background: var(--ink2);
+  padding: 48px 36px;
+  position: relative;
+  transition: background 0.4s;
+  overflow: hidden;
+}
+
+.stake-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-deep), transparent);
+  transform: scaleX(0);
+  transition: transform 0.4s;
+}
+
+.stake-card:hover { background: rgba(200,169,126,0.03); }
+.stake-card:hover::after { transform: scaleX(1); }
+
+.stake-card.hero-card { background: rgba(200,169,126,0.04); }
+.stake-card.hero-card::after { transform: scaleX(1); }
+
+.stake-badge {
+  position: absolute;
+  top: 0; right: 0;
+  background: linear-gradient(135deg, var(--gold-deep), var(--gold));
+  color: var(--ink);
+  font-family: 'DM Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 2px;
+  padding: 5px 14px;
+  font-weight: 400;
+}
+
+.stake-tier {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 4px;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+
+.stake-apy-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: 80px;
+  line-height: 1;
+  color: var(--gold-light);
+  display: block;
+  letter-spacing: -1px;
+}
+
+.stake-apy-unit {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: 28px;
+  color: var(--gold-deep);
+  margin-bottom: 32px;
+  display: block;
+}
+
+.stake-specs {
+  border-top: 1px solid var(--border);
+  padding-top: 28px;
+  margin-bottom: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.spec-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.spec-k {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+.spec-v {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: var(--text);
+}
+
+.btn-stake {
+  width: 100%;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--gold);
+  padding: 14px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-stake:hover {
+  background: rgba(200,169,126,0.08);
+  border-color: var(--gold);
+  color: var(--gold-light);
+}
+
+.hero-card .btn-stake {
+  background: linear-gradient(135deg, var(--gold-deep), var(--gold));
+  color: var(--ink);
+  border-color: transparent;
+}
+
+.hero-card .btn-stake:hover {
+  box-shadow: 0 8px 30px rgba(200,169,126,0.25);
+}
+
+.roadmap-section {
+  padding: 120px 64px;
+  position: relative;
+  z-index: 2;
+}
+
+.roadmap-inner { max-width: 1100px; margin: 0 auto; }
+
+.roadmap-line {
+  position: relative;
+  margin-top: 80px;
+}
+
+.roadmap-line::before {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), var(--border), var(--border), transparent);
+}
+
+.phases {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+
+.phase {
+  padding: 0 32px;
+  position: relative;
+  padding-top: 52px;
+}
+
+.phase-dot {
+  position: absolute;
+  top: 12px;
+  left: 32px;
+  width: 16px;
+  height: 16px;
+  border: 1px solid var(--gold-deep);
+  background: var(--ink);
+  transform: rotate(45deg);
+  transition: all 0.3s;
+}
+
+.phase.active .phase-dot {
+  background: var(--gold);
+  border-color: var(--gold);
+  box-shadow: 0 0 20px rgba(200,169,126,0.4);
+}
+
+.phase-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--gold-deep);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.phase.active .phase-label { color: var(--gold); }
+
+.phase-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-size: 22px;
+  letter-spacing: 1px;
+  color: var(--white);
+  margin-bottom: 20px;
+}
+
+.phase-items {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.phase-items li {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.5px;
+  color: var(--muted);
+  line-height: 1.6;
+  padding-left: 14px;
+  position: relative;
+}
+
+.phase-items li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--gold-deep);
+}
+
+.phase.active .phase-items li { color: rgba(212,196,168,0.65); }
+
+.tokenomics-section {
+  padding: 120px 64px;
+  position: relative;
+  z-index: 2;
+  background: var(--ink2);
+}
+
+.tokenomics-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+  margin-top: 0;
+}
+
+.token-info-block { margin-top: 60px; }
+
+.token-table { border: 1px solid var(--border); }
+
+.token-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 28px;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.3s;
+}
+
+.token-row:last-child { border-bottom: none; }
+.token-row:hover { background: var(--surface); }
+
+.tk { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:2px; color:var(--muted); text-transform:uppercase; }
+.tv { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:1px; color:var(--gold-light); }
+
+.alloc-block { margin-top: 60px; display:flex; flex-direction:column; gap:24px; }
+
+.alloc-item {}
+
+.alloc-head {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.alloc-name { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:2px; color:var(--text); text-transform:uppercase; }
+.alloc-pct { font-family:'Cormorant Garamond',serif; font-weight:400; font-size:18px; color:var(--gold); }
+
+.alloc-bar { height:1px; background: var(--border); position:relative; }
+
+.alloc-fill {
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  background: linear-gradient(90deg, var(--gold-deep), var(--gold));
+  animation: barIn 1.6s var(--d, 0s) ease both;
+}
+
+@keyframes barIn {
+  from { width: 0 !important; }
+}
+
+.cta-section {
+  padding: 140px 64px;
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  overflow: hidden;
+}
+
+.cta-eye-bg {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 800px;
+  height: 500px;
+  background: radial-gradient(ellipse, rgba(200,169,126,0.06) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.cta-inner { position:relative; z-index:2; max-width:700px; margin:0 auto; }
+
+.cta-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: clamp(60px, 11vw, 130px);
+  line-height: 0.88;
+  margin-bottom: 32px;
+}
+
+.cta-title .l1 { display:block; color:var(--muted); font-style:italic; }
+.cta-title .l2 { display:block; color:var(--white); font-weight:600; }
+.cta-title .l3 { display:block; color:var(--gold); font-style:italic; font-size:0.5em; letter-spacing:8px; margin-top:16px; }
+
+.cta-desc {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: var(--muted);
+  margin-bottom: 52px;
+  text-transform: uppercase;
+  line-height: 2;
+}
+
+.cta-btns { display:flex; gap:20px; justify-content:center; flex-wrap:wrap; }
+
+footer {
+  padding: 52px 64px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+  position: relative;
+  z-index: 2;
+}
+
+.footer-brand {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: 18px;
+  letter-spacing: 8px;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.footer-nav { display:flex; gap:32px; list-style:none; flex-wrap:wrap; }
+.footer-nav a {
+  color: var(--muted);
+  text-decoration: none;
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+.footer-nav a:hover { color: var(--gold); }
+
+.footer-copy {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 1px;
+  color: rgba(200,169,126,0.2);
+}
+
+.modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(8,7,5,0.9);
+  backdrop-filter: blur(16px);
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s;
+}
+
+.modal-overlay.active { opacity:1; pointer-events:all; }
+
+.modal {
+  background: var(--ink2);
+  border: 1px solid var(--border);
+  padding: 60px 52px;
+  max-width: 400px;
+  width: 90%;
+  position: relative;
+  transform: translateY(24px) scale(0.97);
+  transition: transform 0.4s;
+  overflow: hidden;
+}
+
+.modal::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 20%; right: 20%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.modal-overlay.active .modal { transform: translateY(0) scale(1); }
+
+.modal-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: 11px;
+  letter-spacing: 8px;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.modal-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 400;
+  font-size: 32px;
+  letter-spacing: 2px;
+  color: var(--white);
+  text-align: center;
+  margin-bottom: 6px;
+}
+
+.modal-sub {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 3px;
+  color: var(--muted);
+  text-align: center;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+}
+
+.wallet-opt {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  border: 1px solid var(--border);
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.wallet-opt:hover {
+  border-color: var(--gold-deep);
+  background: var(--surface);
+}
+
+.wo-icon { font-size: 20px; }
+.wo-name { font-family:'Montserrat',sans-serif; font-weight:500; font-size:13px; letter-spacing:1px; color:var(--text); }
+.wo-hint { font-family:'DM Mono',monospace; font-size:9px; letter-spacing:1px; color:var(--muted); }
+
+.modal-close {
+  position: absolute;
+  top: 20px; right: 24px;
+  background: none; border: none;
+  color: var(--muted);
+  font-size: 16px;
+  cursor: pointer;
+  font-family: 'DM Mono', monospace;
+  transition: color 0.3s;
+}
+.modal-close:hover { color: var(--gold); }
+
+@media (max-width: 900px) {
+  nav { padding: 20px 24px; }
+  nav.scrolled { padding: 14px 24px; }
+  .nav-links { display: none; }
+  .hero, .claim-section, .staking-section, .roadmap-section, .tokenomics-section, .cta-section { padding: 80px 24px; }
+  .stats-section { padding: 60px 24px; }
+  .stats-wrap { grid-template-columns: repeat(2,1fr); }
+  .stat-item:nth-child(2) { border-right: none; }
+  .stake-grid { grid-template-columns: 1fr; }
+  .phases { grid-template-columns: 1fr 1fr; gap: 40px; }
+  .roadmap-line::before { display: none; }
+  .phase { padding-top: 40px; padding-left: 20px; padding-right: 0; }
+  .phase-dot { left: 0; }
+  .tokenomics-inner { grid-template-columns: 1fr; gap: 0; }
+  footer { flex-direction: column; text-align: center; padding: 40px 24px; }
+  .sep { padding: 0 24px; }
+}
+</style>
+</head>
+<body>
+
+<canvas id="nebula"></canvas>
+<div class="vignette"></div>
+
+<nav id="nav">
+  <div class="nav-logo">Vision</div>
+  <ul class="nav-links">
+    <li><a href="#claim">Claim</a></li>
+    <li><a href="#staking">Stake</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#tokenomics">Token</a></li>
+  </ul>
+  <button class="btn-connect" onclick="openModal()">Connect Wallet</button>
+</nav>
+
+<section class="hero">
+  <svg class="eye-svg" viewBox="0 0 700 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="350" cy="140" rx="340" ry="130" stroke="#C8A97E" stroke-width="0.5"/>
+    <ellipse cx="350" cy="140" rx="240" ry="90" stroke="#C8A97E" stroke-width="0.5"/>
+    <path d="M10 140 Q350 10 690 140 Q350 270 10 140Z" stroke="#C8A97E" stroke-width="1" fill="none"/>
+    <circle cx="350" cy="140" r="70" stroke="#C8A97E" stroke-width="0.5"/>
+    <circle cx="350" cy="140" r="35" stroke="#C8A97E" stroke-width="1"/>
+    <circle cx="350" cy="140" r="10" fill="#C8A97E" opacity="0.4"/>
+    <line x1="10" y1="140" x2="690" y2="140" stroke="#C8A97E" stroke-width="0.3" opacity="0.4"/>
+    <line x1="350" y1="10" x2="350" y2="270" stroke="#C8A97E" stroke-width="0.3" opacity="0.4"/>
+  </svg>
+  <div class="hero-overline">AI · DeFi · Intelligence</div>
+  <div class="hero-title">
+    <span class="t1">The Future Has</span>
+    <span class="t2">VISION</span>
+    <span class="t3">$VSN Token</span>
+  </div>
+  <div class="hero-divider"></div>
+  <p class="hero-desc">An AI-powered DeFi platform that sees what others miss. Stake, earn, and grow with the intelligence of tomorrow.</p>
+  <div class="hero-btns">
+    <button class="btn-primary" onclick="openModal()">Connect Wallet</button>
+    <button class="btn-ghost" onclick="document.getElementById('claim').scrollIntoView({behavior:'smooth'})">Claim $VSN</button>
+  </div>
+</section>
+
+<div class="sep"><div class="sep-line"></div><span class="sep-label">Overview</span><div class="sep-line r"></div></div>
+
+<section class="stats-section">
+  <div class="stats-wrap">
+    <div class="stat-item">
+      <span class="stat-val">$240M</span>
+      <span class="stat-lbl">Total Value Locked</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-val">185K</span>
+      <span class="stat-lbl">Token Holders</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-val">360%</span>
+      <span class="stat-lbl">Max Annual Yield</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-val">500M</span>
+      <span class="stat-lbl">Total Supply</span>
+    </div>
+  </div>
+</section>
+
+<div class="sep"><div class="sep-line"></div><span class="sep-label">Airdrop</span><div class="sep-line r"></div></div>
+
+<section class="claim-section" id="claim">
+  <div class="claim-inner">
+    <span class="section-overline">Token Distribution</span>
+    <h2 class="section-title">
+      <em>Claim Your</em><br>
+      <strong>$VSN Tokens</strong>
+    </h2>
+    <div class="claim-panel">
+      <span class="claim-amount-display">$VSN</span>
+      <span class="claim-ticker">Verify — Claim — Stake</span>
+      <div class="input-group">
+        <input class="wallet-field" type="text" placeholder="Enter wallet address...">
+        <button class="btn-check">Verify</button>
+      </div>
+      <p class="claim-note">
+        Connect your wallet to automatically verify snapshot eligibility.<br>
+        Unclaimed allocation redistributed after close date.
+      </p>
+      <button class="btn-primary" onclick="openModal()">Connect & Claim</button>
+    </div>
+  </div>
+</section>
+
+<div class="sep"><div class="sep-line"></div><span class="sep-label">Staking</span><div class="sep-line r"></div></div>
+
+<section class="staking-section" id="staking">
+  <div class="staking-inner">
+    <div class="staking-head">
+      <div>
+        <span class="section-overline">Yield Vaults</span>
+        <h2 class="section-title" style="text-align:left">
+          <em>Stake &</em> <strong>Earn</strong>
+        </h2>
+      </div>
+      <div class="apy-tag">Up to 360% APY</div>
+    </div>
+    <div class="stake-grid">
+      <div class="stake-card">
+        <div class="stake-tier">Liquid Vault</div>
+        <span class="stake-apy-num">90</span>
+        <span class="stake-apy-unit">% APY</span>
+        <div class="stake-specs">
+          <div class="spec-row"><span class="spec-k">Lock</span><span class="spec-v">None</span></div>
+          <div class="spec-row"><span class="spec-k">Minimum</span><span class="spec-v">100 VSN</span></div>
+          <div class="spec-row"><span class="spec-k">Rewards</span><span class="spec-v">Daily</span></div>
+          <div class="spec-row"><span class="spec-k">Withdraw</span><span class="spec-v">Anytime</span></div>
+        </div>
+        <button class="btn-stake" onclick="openModal()">Enter Vault</button>
+      </div>
+      <div class="stake-card hero-card">
+        <div class="stake-badge">Optimal</div>
+        <div class="stake-tier">Genesis Vault</div>
+        <span class="stake-apy-num">200</span>
+        <span class="stake-apy-unit">% APY</span>
+        <div class="stake-specs">
+          <div class="spec-row"><span class="spec-k">Lock</span><span class="spec-v">60 Days</span></div>
+          <div class="spec-row"><span class="spec-k">Minimum</span><span class="spec-v">500 VSN</span></div>
+          <div class="spec-row"><span class="spec-k">Rewards</span><span class="spec-v">Daily</span></div>
+          <div class="spec-row"><span class="spec-k">Bonus</span><span class="spec-v">AI Access</span></div>
+        </div>
+        <button class="btn-stake" onclick="openModal()">Enter Vault</button>
+      </div>
+      <div class="stake-card">
+        <div class="stake-tier">Apex Vault</div>
+        <span class="stake-apy-num">360</span>
+        <span class="stake-apy-unit">% APY</span>
+        <div class="stake-specs">
+          <div class="spec-row"><span class="spec-k">Lock</span><span class="spec-v">180 Days</span></div>
+          <div class="spec-row"><span class="spec-k">Minimum</span><span class="spec-v">2000 VSN</span></div>
+          <div class="spec-row"><span class="spec-k">Rewards</span><span class="spec-v">Hourly</span></div>
+          <div class="spec-row"><span class="spec-k">Bonus</span><span class="spec-v">DAO Vote</span></div>
+        </div>
+        <button class="btn-stake" onclick="openModal()">Enter Vault</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"><div class="sep-line"></div><span class="sep-label">Roadmap</span><div class="sep-line r"></div></div>
+
+<section class="roadmap-section" id="roadmap">
+  <div class="roadmap-inner">
+    <span class="section-overline">The Path Ahead</span>
+    <h2 class="section-title">
+      <em>Our</em> <strong>Vision</strong>
+    </h2>
+    <div class="roadmap-line">
+      <div class="phases">
+        <div class="phase active">
+          <div class="phase-dot"></div>
+          <span class="phase-label">Phase I — Now</span>
+          <div class="phase-title">Genesis</div>
+          <ul class="phase-items">
+            <li>Token launch & distribution</li>
+            <li>Airdrop to early adopters</li>
+            <li>Smart contract audit</li>
+            <li>CEX listings</li>
+          </ul>
+        </div>
+        <div class="phase active">
+          <div class="phase-dot"></div>
+          <span class="phase-label">Phase II — Q2</span>
+          <div class="phase-title">Infrastructure</div>
+          <ul class="phase-items">
+            <li>Staking vaults launch</li>
+            <li>AI yield optimization</li>
+            <li>Governance module</li>
+            <li>Mobile app beta</li>
+          </ul>
+        </div>
+        <div class="phase">
+          <div class="phase-dot"></div>
+          <span class="phase-label">Phase III — Q3</span>
+          <div class="phase-title">Intelligence</div>
+          <ul class="phase-items">
+            <li>AI trading signals</li>
+            <li>Cross-chain bridge</li>
+            <li>LP incentive programs</li>
+            <li>DAO governance live</li>
+          </ul>
+        </div>
+        <div class="phase">
+          <div class="phase-dot"></div>
+          <span class="phase-label">Phase IV — Q4</span>
+          <div class="phase-title">Expansion</div>
+          <ul class="phase-items">
+            <li>Institutional API</li>
+            <li>NFT utility layer</li>
+            <li>Ecosystem grants</li>
+            <li>Global partnerships</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"><div class="sep-line"></div><span class="sep-label">Tokenomics</span><div class="sep-line r"></div></div>
+
+<section class="tokenomics-section" id="tokenomics">
+  <div style="max-width:1100px;margin:0 auto">
+    <span class="section-overline">Token Architecture</span>
+    <h2 class="section-title">
+      <em>$VSN</em> <strong>Token</strong>
+    </h2>
+  </div>
+  <div class="tokenomics-inner" style="margin-top:60px">
+    <div>
+      <div class="token-table">
+        <div class="token-row"><span class="tk">Name</span><span class="tv">Vision</span></div>
+        <div class="token-row"><span class="tk">Ticker</span><span class="tv">$VSN</span></div>
+        <div class="token-row"><span class="tk">Network</span><span class="tv">Ethereum / Solana</span></div>
+        <div class="token-row"><span class="tk">Total Supply</span><span class="tv">500,000,000</span></div>
+        <div class="token-row"><span class="tk">Circulating</span><span class="tv">100,000,000</span></div>
+        <div class="token-row"><span class="tk">Contract</span><span class="tv">Audited — CertiK</span></div>
+        <div class="token-row"><span class="tk">Burn</span><span class="tv">3% per transaction</span></div>
+        <div class="token-row"><span class="tk">Liquidity Lock</span><span class="tv">3 Years</span></div>
+      </div>
+    </div>
+    <div class="alloc-block">
+      <div class="alloc-item">
+        <div class="alloc-head"><span class="alloc-name">Community & Airdrop</span><span class="alloc-pct">35%</span></div>
+        <div class="alloc-bar"><div class="alloc-fill" style="width:35%;--d:0.1s"></div></div>
+      </div>
+      <div class="alloc-item">
+        <div class="alloc-head"><span class="alloc-name">Staking Rewards</span><span class="alloc-pct">25%</span></div>
+        <div class="alloc-bar"><div class="alloc-fill" style="width:25%;--d:0.3s"></div></div>
+      </div>
+      <div class="alloc-item">
+        <div class="alloc-head"><span class="alloc-name">Liquidity Pool</span><span class="alloc-pct">20%</span></div>
+        <div class="alloc-bar"><div class="alloc-fill" style="width:20%;--d:0.5s"></div></div>
+      </div>
+      <div class="alloc-item">
+        <div class="alloc-head"><span class="alloc-name">Team & Advisors</span><span class="alloc-pct">12%</span></div>
+        <div class="alloc-bar"><div class="alloc-fill" style="width:12%;--d:0.7s"></div></div>
+      </div>
+      <div class="alloc-item">
+        <div class="alloc-head"><span class="alloc-name">Ecosystem Fund</span><span class="alloc-pct">8%</span></div>
+        <div class="alloc-bar"><div class="alloc-fill" style="width:8%;--d:0.9s"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="sep"><div class="sep-line"></div><span class="sep-label">Join</span><div class="sep-line r"></div></div>
+
+<section class="cta-section">
+  <div class="cta-eye-bg"></div>
+  <div class="cta-inner">
+    <h2 class="cta-title">
+      <span class="l1">See</span>
+      <span class="l2">Beyond</span>
+      <span class="l3">$VSN · Vision · DeFi · AI</span>
+    </h2>
+    <p class="cta-desc">The platform that sees what others miss.<br>Join the movement. Shape the future.</p>
+    <div class="cta-btns">
+      <button class="btn-primary" onclick="openModal()">Connect Wallet</button>
+      <button class="btn-ghost" onclick="document.getElementById('staking').scrollIntoView({behavior:'smooth'})">Explore Vaults</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-brand">Vision</div>
+  <ul class="footer-nav">
+    <li><a href="#">Whitepaper</a></li>
+    <li><a href="#">Audit</a></li>
+    <li><a href="#">Twitter / X</a></li>
+    <li><a href="#">Telegram</a></li>
+    <li><a href="#">Discord</a></li>
+    <li><a href="#">Privacy</a></li>
+    <li><a href="#">Terms</a></li>
+  </ul>
+  <p class="footer-copy">© 2025 Vision · $VSN Token</p>
+</footer>
+
+<div class="modal-overlay" id="modal" onclick="closeOut(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-logo">Vision Protocol</div>
+    <div class="modal-title">Connect</div>
+    <p class="modal-sub">Select your wallet</p>
+    <div class="wallet-opt" onclick="doConnect()">
+      <span class="wo-icon">🦊</span>
+      <div><div class="wo-name">MetaMask</div><div class="wo-hint">EVM — Ethereum compatible</div></div>
+    </div>
+    <div class="wallet-opt" onclick="doConnect()">
+      <span class="wo-icon">👻</span>
+      <div><div class="wo-name">Phantom</div><div class="wo-hint">Solana network</div></div>
+    </div>
+    <div class="wallet-opt" onclick="doConnect()">
+      <span class="wo-icon">🔵</span>
+      <div><div class="wo-name">Coinbase Wallet</div><div class="wo-hint">Trusted by millions</div></div>
+    </div>
+    <div class="wallet-opt" onclick="doConnect()">
+      <span class="wo-icon">🔗</span>
+      <div><div class="wo-name">WalletConnect</div><div class="wo-hint">Any compatible wallet</div></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const canvas = document.getElementById('nebula');
+const ctx = canvas.getContext('2d');
+let W, H, pts = [], t = 0;
+
+function resize() { W = canvas.width = innerWidth; H = canvas.height = innerHeight; }
+
+function init() {
+  pts = [];
+  for (let i = 0; i < 80; i++) pts.push({
+    x: Math.random() * W, y: Math.random() * H,
+    vx: (Math.random() - 0.5) * 0.15, vy: (Math.random() - 0.5) * 0.15,
+    r: Math.random() * 1.2 + 0.3, a: Math.random() * 0.5 + 0.1
+  });
+}
+
+function draw() {
+  ctx.clearRect(0, 0, W, H);
+  t += 0.002;
+
+  ctx.save();
+  const cx = W / 2, cy = H * 0.42;
+  const grd = ctx.createRadialGradient(cx, cy, 0, cx, cy, Math.min(W,H) * 0.55);
+  grd.addColorStop(0, 'rgba(200,169,126,0.04)');
+  grd.addColorStop(1, 'transparent');
+  ctx.fillStyle = grd;
+  ctx.fillRect(0, 0, W, H);
+  ctx.restore();
+
+  pts.forEach(p => {
+    p.x += p.vx; p.y += p.vy;
+    if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
+    if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(200,169,126,${p.a * 0.5})`;
+    ctx.fill();
+  });
+
+  pts.forEach((p, i) => {
+    for (let j = i + 1; j < pts.length; j++) {
+      const q = pts[j];
+      const d = Math.hypot(p.x - q.x, p.y - q.y);
+      if (d < 100) {
+        ctx.beginPath();
+        ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y);
+        ctx.strokeStyle = `rgba(200,169,126,${(1 - d/100) * 0.05})`;
+        ctx.lineWidth = 0.5;
+        ctx.stroke();
+      }
+    }
+  });
+
+  requestAnimationFrame(draw);
+}
+
+window.addEventListener('resize', () => { resize(); init(); });
+resize(); init(); draw();
+
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', scrollY > 60);
+});
+
+function openModal() {
+  document.getElementById('modal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('modal').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function closeOut(e) { if (e.target === document.getElementById('modal')) closeModal(); }
+
+function doConnect() {
+  closeModal();
+  const btn = document.querySelector('.btn-connect');
+  btn.textContent = '◆ Connected';
+  btn.style.borderColor = 'var(--gold)';
+  btn.style.color = 'var(--gold-light)';
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+</script>
+</body>
+</html>
